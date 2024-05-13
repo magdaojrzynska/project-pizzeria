@@ -175,16 +175,17 @@
           //check if there is param with a name of paramId in formData and if it includes optionId
           if (formData[paramId] && formData[paramId].includes(optionId)) {
             // check if the option is not default
-            if (!option.default == true) {
+            console.log("thisProduct.data", thisProduct.data)
+            if (option.default != true) {
               // add option price to price variable
-              let price = thisProduct.data.price + option.priceElem;
+              price = price + option.price;
               console.log(price);
 
             } else {
               // check if the option is default
               if (option.default == true) {
                 // reduce price variable 
-                let price = thisProduct.data.price - option.priceElem;
+                price = price - option.price;
                 console.log(price);
               }
             }
