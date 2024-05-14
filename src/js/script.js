@@ -173,6 +173,8 @@
           const option = param.options[optionId];
           console.log(optionId, option);
 
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+
           //check if there is param with a name of paramId in formData and if it includes optionId
           if (formData[paramId] && formData[paramId].includes(optionId)) {
             // check if the option is not default
@@ -182,6 +184,10 @@
               price = price + option.price;
               console.log(price);
             }
+
+            if(optionImage) {
+              optionImage.classList.add(classNames.menuProduct.imageVisible)
+            }
           } else {
             // check if the option is default
             if (option.default == true) {
@@ -189,13 +195,15 @@
               price = price - option.price;
               console.log(price);
             }
+
+            if(optionImage) {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible)
+            }
           }
 
-          /*if(optionImage == classNames.menuProduct.imageVisible) {
-            const optionImage = thisProduct.imageWrapper.querySelector(.paramId-optionId);
-            console.log(optionImage);
-
-          }*/
+          
+          
+          
 
 
           // update calculated price in the HTML
