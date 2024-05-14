@@ -1,4 +1,4 @@
-/* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
+/* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-varsprice
 
 {
   'use strict';
@@ -98,6 +98,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
 
@@ -180,16 +181,22 @@
               // add option price to price variable
               price = price + option.price;
               console.log(price);
-
-            } else {
-              // check if the option is default
-              if (option.default == true) {
-                // reduce price variable 
-                price = price - option.price;
-                console.log(price);
-              }
+            }
+          } else {
+            // check if the option is default
+            if (option.default == true) {
+              // reduce price variable 
+              price = price - option.price;
+              console.log(price);
             }
           }
+
+          /*if(optionImage == classNames.menuProduct.imageVisible) {
+            const optionImage = thisProduct.imageWrapper.querySelector(.paramId-optionId);
+            console.log(optionImage);
+
+          }*/
+
 
           // update calculated price in the HTML
           thisProduct.priceElem.innerHTML = price;
